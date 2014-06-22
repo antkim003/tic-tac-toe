@@ -1,0 +1,44 @@
+body {
+  font-family: "Helvetica Neue";
+}
+#environment {
+  width: 400px;
+  height: 400px;
+  margin: 2% auto;
+}
+tbody tr td {
+  border: 1px solid black;
+}
+td {
+  font-size: 70px;
+  width: 33.3333%;
+  height: 33.3333%;
+  text-align: center;
+}
+h1, p {
+  text-align: center;
+}
+.x {
+  color: red;
+}
+.o {
+  color: purple;
+}
+button.restart {
+  width: 150px;
+  height: 75px;
+  font-size: 30px;
+  margin: 0 auto;
+  display:block;
+  background-color: blue;
+  color: white;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+}
+.message {
+  display: none;
+  color: red;
+  font-size: 25px;
+  text-align: center;
+}
