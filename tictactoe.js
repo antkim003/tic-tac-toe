@@ -1,7 +1,7 @@
 // global variables
 
 var turnCounter = 1,
-winner = false, winningPlayer;
+winner = false, gameover = false;
 
 var defaults = {
   width: 3,
@@ -49,17 +49,19 @@ Grid.prototype.buildTable = function() {
 // x always goes first
 function cellPopulator(target) {
   var currentElement = target;
-  if (currentElement.html() == "") {
-    if (turnCounter % 2 == 1) {
-      currentElement.addClass("x");
-      currentElement.html("X");
-      turnCounter ++;
-    } else {
-      currentElement.addClass("o");
-      currentElement.html("O");
-      turnCounter ++;
+  if (!gameover) {  
+    if (currentElement.html() == "") {
+      if (turnCounter % 2 == 1) {
+        currentElement.addClass("x");
+        currentElement.html("X");
+        turnCounter ++;
+      } else {
+        currentElement.addClass("o");
+        currentElement.html("O");
+        turnCounter ++;
 
-    }    
+      }    
+    }
   }
   if (turnCounter >= 5) {
     if (checkForWinners()) {
@@ -71,54 +73,62 @@ function cellPopulator(target) {
 }
 
 function checkForWinners() {
-  var players = ["x", "y"];
+  var players = ["x", "o"];
   for (var i = 0; i < players.length; i++) {
     if ($("#1").hasClass(players[i]) &&
         $("#2").hasClass(players[i]) &&
         $("#3").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#4").hasClass(players[i]) &&
         $("#5").hasClass(players[i]) &&
         $("#6").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#7").hasClass(players[i]) &&
         $("#8").hasClass(players[i]) &&
         $("#9").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#1").hasClass(players[i]) &&
         $("#4").hasClass(players[i]) &&
         $("#7").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#2").hasClass(players[i]) &&
         $("#5").hasClass(players[i]) &&
         $("#8").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#3").hasClass(players[i]) &&
         $("#6").hasClass(players[i]) &&
         $("#9").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#1").hasClass(players[i]) &&
         $("#5").hasClass(players[i]) &&
         $("#9").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }
     if ($("#3").hasClass(players[i]) &&
         $("#5").hasClass(players[i]) &&
         $("#7").hasClass(players[i])) {
       winningPlayer = players[i];
+      gameover = true;
       return true;
     }   
   };
